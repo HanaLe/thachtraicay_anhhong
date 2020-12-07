@@ -1,0 +1,20 @@
+@charset "utf-8";
+.screen08{
+    position: relative;
+    overflow: hidden;
+    .image{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+        max-width: none;
+        bottom: 0;
+        @include SP{
+            width: 120%;
+        }
+        @include Tablet{
+            width: 110%;
+        }
+    }
+}
+

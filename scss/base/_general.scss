@@ -1,0 +1,174 @@
+@charset "utf-8";
+
+.menu{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    @include SP{
+        padding: 0.15rem 0.15rem ;
+    }
+    @include Tablet{
+        padding: 0.4rem 0.3rem;
+    }
+    &-button{
+        background: white;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include SP{
+            width:0.42rem;
+            height:0.42rem;
+        }
+        @include Tablet{
+            width:1.8rem;
+            height: 1.8rem;
+        }
+       
+        
+    }
+    &-icon{
+        max-height: 60%;
+        width: auto;
+        .list &{
+            @include SP{
+                margin-left: -0.03rem;
+                margin-top: -0.01rem;
+            }
+            @include Tablet{
+                margin-left: -0.1rem;
+                margin-top: -0.01rem;
+            }
+        }
+        .logout &{
+            @include SP{
+                margin-left: -0.03rem;
+                margin-top: 0.01rem;
+            }
+            @include Tablet{
+                margin-left: -0.15rem;
+                margin-top: 0.1rem;
+            }
+        }
+    }
+}
+
+.form{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 0;
+    width: 100%;
+    flex: 1;
+    &-title{
+        color: #ed1c24;
+        text-align: center;
+       
+    }
+    &-group{
+        text-align: center;
+        width: 100%;
+        &:not(:last-child){
+            margin-bottom: 4vh;
+        }
+    }
+    &-control{
+        width: 100%;
+        max-width: 70%;
+        background: white;
+        border: 0.05rem solid #f0b544;
+        border-radius: 200px;
+        color: #f4783d;
+        line-height: 1.5;
+        @include font-main;
+        outline: none;
+        @include SP{
+            padding:0.18rem 0.2rem;
+            font-size: 0.13rem;
+        }
+        @include Tablet{
+            padding:0.6rem 1rem;
+            font-size: 0.65rem;
+            border-width: 0.25rem
+        }
+      
+    }
+    &-button{
+        background: #f6881f;
+        border: 0.03rem solid white;
+        border-radius: 200px;
+        color: white;
+        line-height: 1.5;
+        @include font-main;
+        margin-left: auto;
+        outline: none;
+        margin-right: auto;
+        @include SP{
+            padding:0.1rem 0.4rem;
+            font-size: 0.13rem;
+            text-shadow: 0.01rem 0 0 rgba(white,0.4);
+        }
+        @include Tablet{
+            padding:0.3rem 2rem;
+            font-size: 0.6rem;
+            border-width: 0.15rem;
+            text-shadow: 0.05rem 0 0 rgba(white,0.4);
+        }
+        &-small{
+            @include SP{
+                padding:0.05rem 0.2rem;
+                font-size: 0.1rem;
+                border-width: 0.02rem;
+            }
+            @include Tablet{
+                padding:0.1rem 1rem 0.18rem;
+                font-size: 0.4rem;
+                border-width: 0.12rem;
+            }
+        }
+    }
+    
+    ::placeholder{
+        @include font-main;
+        color: #f4783d;
+        @include SP{
+            font-size: 0.13rem;
+        }
+        @include Tablet{
+            font-size: 0.65rem;
+        }
+    }
+    &-icon{
+        background-repeat: no-repeat;
+        @include SP{
+            padding-left: 0.48rem;
+            background-position: 0.17rem center;
+            background-size: 0.2rem;
+            
+        }
+        @include Tablet{
+            padding-left: 2.4rem;
+            background-position: 0.9rem center;
+            background-size: 1rem;
+           
+        }
+        &.icon-user{
+            background-image: url(/assets/image/SVG/icon_user.svg);
+        }
+        &.icon-phone{
+            background-image: url(/assets/image/SVG/icon_phone.svg);
+        }
+    }
+    &-row{
+        display: flex;
+
+    }
+    &-col{
+        flex: 1;
+        flex-basis: 0;
+    }
+    &-checkbox{
+        display: none;
+    }
+}

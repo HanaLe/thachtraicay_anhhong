@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.screen01{
+    position: relative;
+    overflow: hidden;
+    .image{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+        max-width: none;
+        @include SP{
+            bottom: 1.3vh;
+            width: 120%;
+        }
+        @include Tablet{
+            width: 115%;
+            bottom: 2vh;
+        }
+    }
+}

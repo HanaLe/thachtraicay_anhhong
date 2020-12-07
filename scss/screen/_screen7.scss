@@ -1,0 +1,82 @@
+@charset "utf-8";
+.screen07{
+    position: relative;
+    overflow: hidden;
+    .image{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+        max-width: none;
+        bottom: 0;
+        @include SP{
+            width: 120%;
+        }
+        @include Tablet{
+            width: 110%;
+        }
+    }
+    .form-button{
+        white-space: nowrap;
+        text-align: center;
+        padding-left: 0;
+        padding-right: 0;
+        @include SP{
+            width: 1.6rem;
+            margin: 0 0.1rem;
+        }
+        @include Tablet{
+            width: 8rem;
+            margin: 0 0.2rem;
+        }
+    }
+    .form-button-group{
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        @include SP{
+            top: 70vh;
+        }
+        @include Tablet{
+            top: 66vh;
+        }
+        @include landscape{
+            top: 118vh;
+        }
+    }
+}
+
+.wheel{
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    @include SP{
+        top: 34vh;
+    }
+    @include Tablet{
+        top: 8vh;
+    }
+    @include landscape{
+        top: 23vh;
+    }
+    &-pin{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        @include SP{
+            width: 0.5rem;
+            top: 1.2vh;
+        }
+        @include Tablet{
+            width: 2.5rem;
+            top: 11vh;
+        }
+        @include landscape{
+            width: 2rem;
+            top: 18vh;
+        }
+    }
+}

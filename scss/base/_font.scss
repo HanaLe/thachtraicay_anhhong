@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: '#9Slide03 SVNNexa Rust Sans Bla';
+    src: url('/assets/fonts/9Slide03SVN-NexaRustSansBlack.eot');
+    src: url('/assets/fonts/9Slide03SVN-NexaRustSansBlack.eot?#iefix') format('embedded-opentype'),
+        url('/assets/fonts/9Slide03SVN-NexaRustSansBlack.woff2') format('woff2'),
+        url('/assets/fonts/9Slide03SVN-NexaRustSansBlack.woff') format('woff'),
+        url('/assets/fonts/9Slide03SVN-NexaRustSansBlack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+@mixin font-main {
+    font-family: '#9Slide03 SVNNexa Rust Sans Bla', Arial, Helvetica, sans-serif;
+}

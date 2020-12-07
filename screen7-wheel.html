@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assets/css/common.css">
+    <script src="assets/js/Winwheel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+</head>
+<body>
+    <div class="screen screen07">
+        <img class="image" src="/assets/image/screen07.png" alt="">
+        <div class="wheel">
+            <img class="wheel-pin" src="/assets/image/SVG/pin.svg" alt="">
+            <canvas  class="wheel-image"  data-responsiveMinWidth="180" data-responsiveScaleHeight="true" id='canvas' width='900' height='900'>
+                <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
+            </canvas>
+        </div>
+        <div class="form-button-group">
+            <button class="form-button">Số lần quay: <span id="round">3</span></button>
+            <button class="form-button" id="js-startspin" onclick="startSpin()">Bắt đầu</button>
+        </div>
+        
+    </div>
+
+    <script>
+        let round = document.getElementById('round'), round_num = round.innerHTML;
+        let theWheel = new Winwheel({
+            'numSegments' : 4,
+            'outerRadius' : 45,
+            'textFillStyle'     : 'white',
+            'responsive'   : true,
+            'drawMode'          : 'image',
+            'animation' :
+            {
+                'type'          : 'spinToStop',
+                'duration'      : 5,
+                'spins'         : 8,
+                'callbackFinished' : 'alertPrize()',
+            }
+        });
+    
+        let loadedImg = new Image();
+        loadedImg.onload = function()
+        {
+            theWheel.wheelImage = loadedImg;    
+            theWheel.draw();                  
+        }
+    
+        loadedImg.src = "assets/image/vongquay.png";
+     
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = ajaxStateChange;
+     
+        function startSpin()
+        {
+            xhr.open('GET',"prize.php", true);
+            xhr.send('');
+            --round_num;
+        }
+        function alertPrize()
+        {
+            round.innerHTML = round_num;
+            alert("WIN");
+            if(round_num > 0){
+                resetWheel();
+            }else{
+                let el = document.getElementById('js-startspin');
+                el.disabled = true;
+            }
+        }
+        function resetWheel(){
+            theWheel.stopAnimation(false); 
+            theWheel.rotationAngle=0; 
+        }
+        function ajaxStateChange()
+        {
+            if (xhr.readyState < 4) {
+                return;
+            }
+     
+            if (xhr.status !== 200) {
+                return;
+            }
+     
+            if (xhr.readyState === 4) {
+                let segmentNumber = xhr.responseText;   
+     
+                if (segmentNumber) {
+                    let stopAt = theWheel.getRandomForSegment(segmentNumber);
+                    theWheel.animation.stopAngle = stopAt;
+                    theWheel.startAnimation();
+                }
+            }
+        }
+     
+    </script>
+</body>
+</html>

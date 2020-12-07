@@ -1,0 +1,38 @@
+@charset "utf-8";
+.screen06{
+    position: relative;
+    overflow: hidden;
+    .image{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+        max-width: none;
+        bottom: 0;
+        @include SP{
+            width: 120%;
+        }
+        @include Tablet{
+            width: 110%;
+        }
+    }
+    .form-button{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        @include SP{
+            padding-bottom: 0.13rem;
+            padding-top: 0.1rem;
+            top: 70vh;
+        }
+        @include Tablet{
+            padding-bottom: 0.6rem;
+            padding-top: 0.5rem;
+            top: 60vh;
+        }
+        @include landscape{
+            top: 75vh;
+        }
+    }
+}
+
