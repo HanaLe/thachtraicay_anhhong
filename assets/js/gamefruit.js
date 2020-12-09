@@ -11,7 +11,7 @@ var game = new Phaser.Game(w, h, Phaser.AUTO, 'game-fruit',
         });
 
 function preload() {
-    
+
     this.load.image('bg', 'assets/image/game/bg.jpg');
     this.load.image('arrow', 'assets/image/game/game-arrow.png');
 
@@ -44,7 +44,6 @@ function preload() {
     this.load.image('part-thachvang2', 'assets/image/game/thachvang2.png');
     this.load.image('part-thachcam1', 'assets/image/game/thachcam1.png');
     this.load.image('part-thachcam2', 'assets/image/game/thachcam2.png');
-
    
 }
 
@@ -56,9 +55,8 @@ var thom_objects,
     thachvang_objects,
     slashes,
     line,
-    scoreLabel,
-    score = 0,
-    scoreBest,
+    bg,
+    timeLabel,
     arrow,
     points = [];	
 
@@ -67,7 +65,11 @@ var nextFire = 0;
 var counter = 0;
 
 function create() {
-    game.add.image(0, 0, 'bg');
+    bg = game.add.image(w / 2, h / 2, 'bg');
+    bg.anchor.setTo(.5, .5);
+    bg.width= w;
+    bg.height= h;
+    
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.gravity.y = 200;
 	thom_objects = createGroup(12,'thom');
@@ -80,6 +82,9 @@ function create() {
     arrow = game.add.image(w-50, h-50, 'arrow');
     
     slashes = game.add.graphics(0, 0);
+
+    var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+    timeLabel = game.add.text(w-100,0+10,'',style);
     
 	emitter_thom1 = game.add.emitter(0, 0, 300);
 	emitter_thom1.makeParticles('part-thom1');
@@ -188,9 +193,9 @@ function throwObject() {
 var health;
 
 function updateTimer() {
-    timer--;
-    console.log(timer)
-    if( timer == 0){
+    var time = timer--;
+    timeLabel.text = '0:'+ time +'s';
+    if( time == 0){
         gameOver()
     }
 }
