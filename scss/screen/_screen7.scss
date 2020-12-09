@@ -54,7 +54,7 @@
     left: 50%;
     transform: translateX(-50%);
     @include SP{
-        top: 34vh;
+        top: 28vh;
     }
     @include Tablet{
         top: 8vh;
@@ -68,7 +68,7 @@
         transform: translateX(-50%);
         @include SP{
             width: 0.5rem;
-            top: 1.2vh;
+            top: 6.2vh;
         }
         @include Tablet{
             width: 2.5rem;

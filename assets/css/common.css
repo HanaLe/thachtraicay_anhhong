@@ -847,7 +847,7 @@ select::-ms-expand {
 
 @media only screen and (max-width: 767px) {
   .wheel {
-    top: 34vh;
+    top: 28vh;
   }
 }
 
@@ -873,7 +873,7 @@ select::-ms-expand {
 @media only screen and (max-width: 767px) {
   .wheel-pin {
     width: 0.5rem;
-    top: 1.2vh;
+    top: 6.2vh;
   }
 }
 
