@@ -84,7 +84,7 @@ function create() {
     slashes = game.add.graphics(0, 0);
 
     var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-    timeLabel = game.add.text(w-100,0+10,'',style);
+    timeLabel = game.add.text(w-100,0+10,'0:30',style);
     
 	emitter_thom1 = game.add.emitter(0, 0, 300);
 	emitter_thom1.makeParticles('part-thom1');
@@ -193,8 +193,12 @@ function throwObject() {
 var health;
 
 function updateTimer() {
-    var time = timer--;
-    timeLabel.text = '0:'+ time +'s';
+    var time = --timer;
+    (time>=10)?
+        timeLabel.text = '0:'+ time:
+    (time<10&&time>0)?
+        timeLabel.text = '0:0'+ time : timeLabel.text = '0:00'
+
     if( time == 0){
         gameOver()
     }
@@ -208,7 +212,9 @@ function throw_obj(item){
 	game.physics.arcade.moveToXY(obj, game.world.centerX + Math.random()*100-Math.random()*10, game.world.centerY + Math.random()*100-Math.random()*10, 700);
 }
 function update() {
-    throwObject();
+    if(timer>0){
+        throwObject();
+    }
 	points.push({
 		x: game.input.x,
 		y: game.input.y
@@ -333,33 +339,9 @@ function Tween(x,y,image){
     game.add.tween(game_arrow).to( { alpha: 0 }, 200, Phaser.Easing.Linear.None, true, 0, 0, false);
 
     var game_status;
-    switch(image){
-        case 'thom':
-            game_status = game.add.image(x-200,y-80,'thom-status');
-            game.add.tween(game_status).to( { alpha: 0 }, 300, Phaser.Easing.Linear.None, true, 0, 0, false);
-            break;
-        case 'chanh':
-            game_status = game.add.image(x-50,y-200,'chanh-status');
-            game.add.tween(game_status).to( { alpha: 0 }, 300, Phaser.Easing.Linear.None, true, 0, 0, false);
-            break;
-        case 'chanhday':
-            game_status = game.add.image(x+50,y,'chanhday-status');
-            game.add.tween(game_status).to( { alpha: 0 }, 300, Phaser.Easing.Linear.None, true, 0, 0, false);
-            break;
-        case 'thachxanh':
-            game_status = game.add.image(x-300,y-50,'thachxanh-status');
-            game.add.tween(game_status).to( { alpha: 0 }, 300, Phaser.Easing.Linear.None, true, 0, 0, false);
-            break;
-        case 'thachvang':
-            game_status = game.add.image(x-80,y-100,'thachvang-status');
-            game.add.tween(game_status).to( { alpha: 0 }, 300, Phaser.Easing.Linear.None, true, 0, 0, false);
-            break;
-        case 'thachcam':
-            game_status = game.add.image(x-40,y,'thachcam-status');
-            game.add.tween(game_status).to( { alpha: 0 }, 300, Phaser.Easing.Linear.None, true, 0, 0, false);
-            break;
-        default: break;
-    }   
+    var image_status = image+'-status'
+    game_status = game.add.image(x-80,y-80,image_status);
+    game.add.tween(game_status).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 0, false);
 }
 function Emitter(item,fruit){
     item.x = fruit.x;
