@@ -132,6 +132,29 @@ select::-ms-expand {
   display: none;
 }
 
+.logo {
+  position: absolute;
+  height: auto;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 2;
+}
+
+@media print, (min-width: 768px) {
+  .logo {
+    width: 5.4rem;
+    top: 0.4rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .logo {
+    width: 1.35rem;
+    top: 0.15rem;
+  }
+}
+
 .menu {
   position: relative;
   display: -webkit-box;
@@ -554,7 +577,7 @@ select::-ms-expand {
 }
 
 .screen03 .form-button-small {
-  text-shadow: 1px 1px 1px #fab89d, 1px -1px 1px #fab89d, 2px 2px 1px #fab89d;
+  text-shadow: 1px 1px 1px #fab89d, 1px -1px 1px #fab89d, 2px 2px 1px #fab89d;
 }
 
 .screen03 .form-button.orange {

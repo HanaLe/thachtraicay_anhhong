@@ -5,6 +5,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    
     .form{
         @include SP{
             margin-top: 0.2rem;

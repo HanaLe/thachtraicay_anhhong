@@ -1,5 +1,19 @@
 @charset "utf-8";
-
+.logo{
+    position: absolute;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    @include Tablet{
+        width:5.4rem;
+        top: 0.4rem;
+    }
+    @include SP{
+        width: 1.35rem;
+        top: 0.15rem;
+    }
+}
 .menu{
     position: relative;
     display: flex;
