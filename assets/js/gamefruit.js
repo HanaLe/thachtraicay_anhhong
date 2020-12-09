@@ -2,6 +2,8 @@ var w = window.innerWidth,
     h = window.innerHeight;
 var timer = 30;
 
+
+
 var game = new Phaser.Game(w, h, Phaser.AUTO, 'game-fruit',
         {   preload: preload, 
             create: create,
@@ -13,6 +15,7 @@ var game = new Phaser.Game(w, h, Phaser.AUTO, 'game-fruit',
 function preload() {
 
     this.load.image('bg', 'assets/image/game/bg.jpg');
+    this.load.image('logo', 'assets/image/logo.png');
     this.load.image('arrow', 'assets/image/game/game-arrow.png');
 
     this.load.audio('sfx', 'assets/sound/splatter.mp3');
@@ -56,8 +59,11 @@ var thom_objects,
     slashes,
     line,
     bg,
+    style,
+    logo,
     timeLabel,
     arrow,
+    button,
     points = [];	
 
 var fireRate = 1000;
@@ -69,6 +75,15 @@ function create() {
     bg.anchor.setTo(.5, .5);
     bg.width= w;
     bg.height= h;
+
+    if(w<768){
+        logo = game.add.image(w / 2,30, 'logo');
+    }else{
+        logo = game.add.image(w / 2,30, 'logo');
+        logo.width= 270;
+        logo.height= 124;
+    }
+    logo.anchor.setTo(.5, 0);
     
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.gravity.y = 200;
@@ -83,9 +98,14 @@ function create() {
     
     slashes = game.add.graphics(0, 0);
 
-    var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-    timeLabel = game.add.text(w-100,0+10,'0:30',style);
-    
+    if(w<768){
+        style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" }
+        timeLabel = game.add.text(w-80,0+10,'0:30',style)
+    }else{
+        style = { font: "bold 64px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" }
+        timeLabel = game.add.text(w-160,0+10,'0:30',style)
+    }
+
 	emitter_thom1 = game.add.emitter(0, 0, 300);
 	emitter_thom1.makeParticles('part-thom1');
 	emitter_thom1.gravity = 300;
