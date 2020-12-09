@@ -28,30 +28,33 @@
                 <input class="form-control form-icon icon-phone" type="text" placeholder="Số điện thoại">
             </div>
             <div class="form-group">
-                <p class="note">Sản phẩm đã mua: 1 lốc vị</p>
+                <p class="note">Sản phẩm đã mua</p>
             </div>
             <div class="form-group">
                 <div class="form-row">
                     <div class="form-col">
-                        <input type="checkbox" class="form-checkbox" id='chanhmuoi'>
+                        
                         <label for="chanhmuoi">
                             <img src="/assets/image/sp_01.png" alt="" for="chanhmuoi">
                             <span class="form-button form-button-small green">Chanh muối</span>
                         </label>
+                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-checkbox" id='chanhmuoi'>
                     </div>
                     <div class="form-col">
-                        <input type="checkbox" class="form-checkbox" id="dua">
                         <label for="dua">
                             <img src="/assets/image/sp_02.png" alt="">
                             <span class="form-button form-button-small yellow">Dứa</span>
                         </label>
+                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-checkbox" id="dua">
+
                     </div>
                     <div class="form-col">
-                        <input type="checkbox" class="form-checkbox" id="chanhday">
                         <label for="chanhday">
                             <img src="/assets/image/sp_03.png" alt="" >
                             <span class="form-button form-button-small orange">Chanh dây</span>
                         </label>
+                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-checkbox" id="chanhday">
+
                     </div>
                 </div>
             </div>
