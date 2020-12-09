@@ -91,3 +91,10 @@ a{
 }
 
 b,strong,em{font-weight: bold;}
+
+select{
+	appearance: none;
+}
+select::-ms-expand{
+	display: none;
+}

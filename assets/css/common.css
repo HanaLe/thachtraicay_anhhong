@@ -122,6 +122,16 @@ b, strong, em {
   font-weight: bold;
 }
 
+select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
 .menu {
   position: relative;
   display: -webkit-box;
@@ -544,7 +554,7 @@ b, strong, em {
 }
 
 .screen03 .form-button-small {
-  text-shadow: 1px 1px 1px #fab89d, 1px -1px 1px #fab89d, 2px 2px 1px #fab89d;
+  text-shadow: 1px 1px 1px #fab89d, 1px -1px 1px #fab89d, 2px 2px 1px #fab89d;
 }
 
 .screen03 .form-button.orange {
