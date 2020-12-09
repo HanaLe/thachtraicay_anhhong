@@ -27,6 +27,7 @@
 
     <script>
         let round = document.getElementById('round'), round_num = round.innerHTML;
+        let el = document.getElementById('js-startspin');
         let theWheel = new Winwheel({
             'numSegments' : 4,
             'outerRadius' : 45,
@@ -56,6 +57,7 @@
      
         function startSpin()
         {
+            el.disabled = true;
             xhr.open('GET',"prize.php", true);
             xhr.send('');
             --round_num;
@@ -65,9 +67,10 @@
             round.innerHTML = round_num;
             alert("WIN");
             if(round_num > 0){
+                el.disabled = false;
                 resetWheel();
             }else{
-                let el = document.getElementById('js-startspin');
+                
                 el.disabled = true;
             }
         }
