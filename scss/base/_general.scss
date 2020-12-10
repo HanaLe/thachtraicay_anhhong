@@ -14,6 +14,21 @@
         top: 0.15rem;
     }
 }
+.camera{
+    position: absolute;
+    @include SP{
+        width:0.42rem;
+        height:0.42rem;
+        bottom: 0.3rem;
+        right: 0.15rem;
+    }
+    @include Tablet{
+        width:1.8rem;
+        height: 1.8rem;
+        bottom: 01rem;
+        right: 0.3rem;
+    }
+}
 .menu{
     position: relative;
     display: flex;
@@ -168,10 +183,10 @@
            
         }
         &.icon-user{
-            background-image: url(/assets/image/SVG/icon_user.svg);
+            background-image: url(/assets/image/icon_user.png);
         }
         &.icon-phone{
-            background-image: url(/assets/image/SVG/icon_phone.svg);
+            background-image: url(/assets/image/icon_phone.png);
         }
     }
     &-row{

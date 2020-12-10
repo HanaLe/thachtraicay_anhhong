@@ -155,6 +155,28 @@ select::-ms-expand {
   }
 }
 
+.camera {
+  position: absolute;
+}
+
+@media only screen and (max-width: 767px) {
+  .camera {
+    width: 0.42rem;
+    height: 0.42rem;
+    bottom: 0.3rem;
+    right: 0.15rem;
+  }
+}
+
+@media print, (min-width: 768px) {
+  .camera {
+    width: 1.8rem;
+    height: 1.8rem;
+    bottom: 01rem;
+    right: 0.3rem;
+  }
+}
+
 .menu {
   position: relative;
   display: -webkit-box;
@@ -415,11 +437,11 @@ select::-ms-expand {
 }
 
 .form-icon.icon-user {
-  background-image: url(/assets/image/SVG/icon_user.svg);
+  background-image: url(/assets/image/icon_user.png);
 }
 
 .form-icon.icon-phone {
-  background-image: url(/assets/image/SVG/icon_phone.svg);
+  background-image: url(/assets/image/icon_phone.png);
 }
 
 .form-row {
@@ -540,6 +562,7 @@ select::-ms-expand {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 767px) {
@@ -639,7 +662,7 @@ select::-ms-expand {
   .screen03 .form-checkbox {
     width: 0.25rem;
     height: 0.25rem;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 0.1rem;
   }
 }
@@ -648,7 +671,7 @@ select::-ms-expand {
   .screen03 .form-checkbox {
     width: 1.2rem;
     height: 1.2rem;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 0.5rem;
   }
 }
@@ -668,6 +691,13 @@ select::-ms-expand {
   .screen03 .note {
     font-size: 0.65rem;
   }
+}
+
+.screen03 ~ canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .screen04 {

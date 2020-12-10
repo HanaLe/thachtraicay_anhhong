@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body>
-    <div class="screen screen03">
+    <div class="screen screen03" id="information">
         <img class="logo" src="/assets/image/logo@2x.png" alt="">
+        <img class="camera js-camera" src="/assets/image/icon_camera.png" alt="">
+
         <div class="menu">
             <a class="menu-button list" href="#">
-                <img class="menu-icon" src="/assets/image/SVG/icon_list.svg" alt="">
+                <img class="menu-icon" src="/assets/image/icon_list.png" alt="">
             </a>
             <a class="menu-button logout" href="#">
-                <img class="menu-icon" src="/assets/image/SVG/icon_logout.svg" alt="">
+                <img class="menu-icon" src="/assets/image/icon_logout.png" alt="">
             </a>
         </div>
         <form class="form" action="">
@@ -62,5 +64,20 @@
             <button class="form-button" type="submit">Bắt đầu trò chơi</button>
         </form>
     </div>
+
+    <script src="/assets/js/jquery-2.1.3.js"></script>
+    <script src="/assets/js/html2canvas.min.js"></script>
+    <script src="/assets/js/canvas2image.js"></script>
+    <script>
+        $('.js-camera').on('click',function(){
+            html2canvas(document.querySelector("#information")).then(function(canvas) {
+            document.body.appendChild(canvas);
+            var image_w = canvas.width;
+            var image_h = canvas.height;
+            Canvas2Image.convertToImage(canvas, image_w, image_h, 'png');
+            Canvas2Image.saveAsImage(canvas, image_w, image_h, 'png')
+            });
+        });
+    </script>
 </body>
 </html>
