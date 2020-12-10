@@ -15,6 +15,7 @@ var game = new Phaser.Game(w, h, Phaser.AUTO, 'game-fruit',
 function preload() {
 
     this.load.image('bg', 'assets/image/game/bg.jpg');
+    this.load.image('button', 'assets/image/game/button.png');
     this.load.image('logo', 'assets/image/logo.png');
     this.load.image('arrow', 'assets/image/game/game-arrow.png');
 
@@ -56,6 +57,7 @@ var thom_objects,
     thachxanh_objects,
     thachcam_objects,
     thachvang_objects,
+    button,
     slashes,
     line,
     bg,
@@ -84,6 +86,16 @@ function create() {
         logo.height= 124;
     }
     logo.anchor.setTo(.5, 0);
+
+    if(w<768){
+        button = game.add.button(w / 2,h-50, 'button', actionOnClick);
+        button.width= 100;
+        button.height= 36;
+    }else{
+        button = game.add.button(w / 2,h-100, 'button', actionOnClick);
+    }
+    button.anchor.setTo(.5, .5);
+
     
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.gravity.y = 200;
@@ -372,4 +384,7 @@ function Emitter(item,fruit){
 
 function gameOver(){
     alert('game over')
+}
+function actionOnClick(){
+    alert('skip game')
 }
