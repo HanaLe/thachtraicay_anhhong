@@ -36,15 +36,7 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        @include SP{
-            top: 70vh;
-        }
-        @include Tablet{
-            top: 66vh;
-        }
-        @include landscape{
-            top: 118vh;
-        }
+        bottom: 38vw;
     }
 }
 
@@ -54,13 +46,10 @@
     left: 50%;
     transform: translateX(-50%);
     @include SP{
-        top: 28vh;
+        bottom: 40vw;
     }
     @include Tablet{
-        top: 8vh;
-    }
-    @include landscape{
-        top: 23vh;
+        bottom: 36vw;
     }
     &-pin{
         position: absolute;
@@ -68,15 +57,16 @@
         transform: translateX(-50%);
         @include SP{
             width: 0.5rem;
-            top: 6.2vh;
+            top:10vw;
         }
         @include Tablet{
             width: 2.5rem;
-            top: 11vh;
+            top:10vw;
         }
-        @include landscape{
-            width: 2rem;
-            top: 18vh;
+    }
+    &-image{
+        @include Tablet{
+            width: 80vw;
         }
     }
 }

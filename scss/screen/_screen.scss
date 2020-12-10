@@ -9,6 +9,6 @@
     background-image:url(../image/SVG/bg.svg);
     @include landscape{
         width: 100vw;
-        height: 140vw;
+        min-height: 140vw;
     }
 }
