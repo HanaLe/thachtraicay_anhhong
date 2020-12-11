@@ -8,12 +8,14 @@ const captureButton = document.getElementById('capture-button');
 const outputCanvas = document.getElementById('output');
 const context = outputCanvas.getContext('2d');
 
-player.webkitRequestFullScreen();
+
 const height = window.innerHeight;
 const width = window.innerWidth;
 
 player.width =width;
 player.height= height;
+
+player.webkitRequestFullScreen();
 
 function toggleCamera(status){
     if(status == 'show'){
@@ -46,7 +48,7 @@ function toggleBody(status){
 
 function startStreamedVideo(player){
     navigator.mediaDevices
-    .getUserMedia({ video: true })
+    .getUserMedia({ video: {facingMode: 'environment'} })
     .then((stream) => {
         player.srcObject = stream;
     }).catch(error => {
