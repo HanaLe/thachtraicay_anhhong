@@ -21,19 +21,13 @@ function preload() {
 
     this.load.audio('sfx', 'assets/sound/splatter.mp3');
 
-    this.load.image('thom', 'assets/image/game/thom.png');
-    this.load.image('chanh', 'assets/image/game/chanh.png');
-    this.load.image('chanhday', 'assets/image/game/chanhday.png');
     this.load.image('thachcam', 'assets/image/game/thachcam.png');
     this.load.image('thachvang', 'assets/image/game/thachvang.png');
     this.load.image('thachxanh', 'assets/image/game/thachxanh.png');
 
-    this.load.image('thom-status', 'assets/image/game/traicay.png');
-    this.load.image('chanh-status', 'assets/image/game/traicay.png');
+    this.load.image('thom-status', 'assets/image/game/ngondai.png');
+    this.load.image('chanh-status', 'assets/image/game/mixtraicay.png');
     this.load.image('chanhday-status', 'assets/image/game/traicay.png');
-    this.load.image('thachcam-status', 'assets/image/game/ngondai.png');
-    this.load.image('thachvang-status', 'assets/image/game/mixtraicay.png');
-    this.load.image('thachxanh-status', 'assets/image/game/ngondai.png');
 
     this.load.image('part-thom1', 'assets/image/game/thom1.png');
     this.load.image('part-thom2', 'assets/image/game/thom2.png');
@@ -41,19 +35,10 @@ function preload() {
     this.load.image('part-chanh2', 'assets/image/game/chanh2.png');
     this.load.image('part-chanhday1', 'assets/image/game/chanhday1.png');
     this.load.image('part-chanhday2', 'assets/image/game/chanhday2.png');
-
-    this.load.image('part-thachxanh1', 'assets/image/game/thachxanh1.png');
-    this.load.image('part-thachxanh2', 'assets/image/game/thachxanh2.png');
-    this.load.image('part-thachvang1', 'assets/image/game/thachvang1.png');
-    this.load.image('part-thachvang2', 'assets/image/game/thachvang2.png');
-    this.load.image('part-thachcam1', 'assets/image/game/thachcam1.png');
-    this.load.image('part-thachcam2', 'assets/image/game/thachcam2.png');
    
 }
 
-var thom_objects,
-    chanh_objects,
-    chanhday_objects,
+var
     thachxanh_objects,
     thachcam_objects,
     thachvang_objects,
@@ -99,9 +84,6 @@ function create() {
     
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.gravity.y = 200;
-	thom_objects = createGroup(12,'thom');
-    chanh_objects = createGroup(12,'chanh');
-    chanhday_objects = createGroup(12,'chanhday');
     thachxanh_objects = createGroup(12,'thachxanh');
     thachvang_objects = createGroup(12,'thachvang');
     thachcam_objects = createGroup(12,'thachcam');
@@ -147,36 +129,6 @@ function create() {
 	emitter_chanhday2.makeParticles('part-chanhday2');
 	emitter_chanhday2.gravity = 300;
     emitter_chanhday2.setYSpeed(-400,400);
-    
-    emitter_thachxanh1 = game.add.emitter(0, 0, 300);
-	emitter_thachxanh1.makeParticles('part-thachxanh1');
-	emitter_thachxanh1.gravity = 300;
-    emitter_thachxanh1.setYSpeed(-400,400);
-    
-    emitter_thachxanh2 = game.add.emitter(0, 0, 300);
-	emitter_thachxanh2.makeParticles('part-thachxanh2');
-	emitter_thachxanh2.gravity = 300;
-    emitter_thachxanh2.setYSpeed(-400,400);
-
-    emitter_thachvang1 = game.add.emitter(0, 0, 300);
-	emitter_thachvang1.makeParticles('part-thachvang1');
-	emitter_thachvang1.gravity = 300;
-    emitter_thachvang1.setYSpeed(-400,400);
-    
-    emitter_thachvang2 = game.add.emitter(0, 0, 300);
-	emitter_thachvang2.makeParticles('part-thachvang2');
-	emitter_thachvang2.gravity = 300;
-    emitter_thachvang2.setYSpeed(-400,400);
-
-    emitter_thachcam1 = game.add.emitter(0, 0, 300);
-	emitter_thachcam1.makeParticles('part-thachcam1');
-	emitter_thachcam1.gravity = 300;
-    emitter_thachcam1.setYSpeed(-400,400);
-    
-    emitter_thachcam2 = game.add.emitter(0, 0, 300);
-	emitter_thachcam2.makeParticles('part-thachcam2');
-	emitter_thachcam2.gravity = 300;
-    emitter_thachcam2.setYSpeed(-400,400);
 
     game.time.events.loop(Phaser.Timer.SECOND, updateTimer, this);
 
@@ -195,25 +147,16 @@ function createGroup (numItems, sprite) {
 function throwObject() {
     if (
         game.time.now > nextFire && 
-        thom_objects.countDead()>0 && 
-        chanh_objects.countDead()>0 &&
-        chanhday_objects.countDead()>0 && 
         thachxanh_objects.countDead()>0 && 
         thachvang_objects.countDead()>0 && 
         thachcam_objects.countDead()>0 
         ) {
 
 		nextFire = game.time.now + fireRate;
-        var random = Math.floor(Math.random() * Math.floor(70));
-		if (random>60 && random<70) {
-			throw_obj(thom_objects);
-        }else if(random>50 && random<60){
-            throw_obj(chanh_objects);
-        }else if(random>40 && random<50){
-            throw_obj(chanhday_objects);
-        }else if(random>30 && random<40){
+        var random = Math.floor(Math.random() * Math.floor(30));
+		if (random>20 && random<30) {
             throw_obj(thachxanh_objects);
-        }else if(random>20 && random<30){
+        }else if(random>10 && random<20){
             throw_obj(thachvang_objects);
         }else{
             throw_obj(thachcam_objects);
@@ -272,9 +215,6 @@ function update() {
 		line = new Phaser.Line(points[i].x, points[i].y, points[i-1].x, points[i-1].y);
 		game.debug.geom(line);
 
-        thom_objects.forEachExists(checkIntersects);
-        chanh_objects.forEachExists(checkIntersects);
-        chanhday_objects.forEachExists(checkIntersects);
         thachxanh_objects.forEachExists(checkIntersects);
         thachcam_objects.forEachExists(checkIntersects);
         thachvang_objects.forEachExists(checkIntersects);
@@ -305,18 +245,12 @@ function checkIntersects(fruit, callback) {
         game.add.audio('sfx').play();
 
         switch(fruit.parent){
-            case thom_objects:
-                killFruit(fruit,'thom',x,y); break;
-            case chanhday_objects:
-                killFruit(fruit,'chanhday',x,y); break;
-            case chanh_objects:
-                killFruit(fruit,'chanh',x,y); break;
             case thachxanh_objects:
-                killFruit(fruit,'thachxanh',x,y); break;
+                killFruit(fruit,'chanh',x,y); break;
             case thachvang_objects:
-                killFruit(fruit,'thachvang',x,y); break;
+                killFruit(fruit,'thom',x,y); break;
             case thachcam_objects:
-                killFruit(fruit,'thachcam',x,y); break;
+                killFruit(fruit,'chanhday',x,y); break;
             default: break;
         }
 	}
@@ -327,38 +261,25 @@ function render() {
 }
 
 function killFruit(fruit,type,x,y) {
+    var status = ["thom","chanh","chanhday"];
+    var value =  status[Math.floor(Math.random()*status.length)];
     switch(type){
         case 'thom':
             Emitter(emitter_thom1,fruit);
             Emitter(emitter_thom2,fruit);
-            Tween(x,y,'thom');
+            Tween(x,y,value);
 
         case 'chanh':
             Emitter(emitter_chanh1,fruit);
             Emitter(emitter_chanh2,fruit);
-            Tween(x,y,'chanh');
+            Tween(x,y,value);
 
             break;
         case 'chanhday':
             Emitter(emitter_chanhday1,fruit);
             Emitter(emitter_chanhday2,fruit);
-            Tween(x,y,'chanhday');
+            Tween(x,y,value);
             
-            break;
-        case 'thachxanh':
-            Emitter(emitter_thachxanh1,fruit);
-            Emitter(emitter_thachxanh2,fruit);
-            Tween(x,y,'thachxanh');
-            break;
-        case 'thachvang':
-            Emitter(emitter_thachvang1,fruit);
-            Emitter(emitter_thachvang2,fruit);
-            Tween(x,y,'thachvang');
-            break;
-        case 'thachcam':
-            Emitter(emitter_thachcam1,fruit);
-            Emitter(emitter_thachcam2,fruit);
-            Tween(x,y,'thachcam');
             break;
         default: break;
     }
