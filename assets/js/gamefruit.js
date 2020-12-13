@@ -29,12 +29,9 @@ function preload() {
     this.load.image('chanh-status', 'assets/image/game/mixtraicay.png');
     this.load.image('chanhday-status', 'assets/image/game/traicay.png');
 
-    this.load.image('part-thom1', 'assets/image/game/thom1.png');
-    this.load.image('part-thom2', 'assets/image/game/thom2.png');
-    this.load.image('part-chanh1', 'assets/image/game/chanh1.png');
-    this.load.image('part-chanh2', 'assets/image/game/chanh2.png');
-    this.load.image('part-chanhday1', 'assets/image/game/chanhday1.png');
-    this.load.image('part-chanhday2', 'assets/image/game/chanhday2.png');
+    this.load.image('part-thom', 'assets/image/game/thom.png');
+    this.load.image('part-chanh', 'assets/image/game/chanh.png');
+    this.load.image('part-chanhday', 'assets/image/game/chanhday.png');
    
 }
 
@@ -84,9 +81,9 @@ function create() {
     
 	game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.gravity.y = 200;
-    thachxanh_objects = createGroup(12,'thachxanh');
-    thachvang_objects = createGroup(12,'thachvang');
-    thachcam_objects = createGroup(12,'thachcam');
+    thachxanh_objects = createGroup(6,'thachxanh');
+    thachvang_objects = createGroup(6,'thachvang');
+    thachcam_objects = createGroup(6,'thachcam');
 
     arrow = game.add.image(w-50, h-50, 'arrow');
     
@@ -100,38 +97,22 @@ function create() {
         timeLabel = game.add.text(w-160,0+10,'0:30',style)
     }
 
-	emitter_thom1 = game.add.emitter(0, 0, 300);
-	emitter_thom1.makeParticles('part-thom1');
-	emitter_thom1.gravity = 300;
-    emitter_thom1.setYSpeed(-400,400);
-
-    emitter_thom2 = game.add.emitter(0, 0, 300);
-	emitter_thom2.makeParticles('part-thom2');
-	emitter_thom2.gravity = 300;
-    emitter_thom2.setYSpeed(-400,400);
+	emitter_thom = game.add.emitter(0, 0, 300);
+	emitter_thom.makeParticles('part-thom');
+	emitter_thom.gravity = 300;
+    emitter_thom.setYSpeed(-400,400);
     
-    emitter_chanh1 = game.add.emitter(0, 0, 300);
-	emitter_chanh1.makeParticles('part-chanh1');
-	emitter_chanh1.gravity = 300;
-    emitter_chanh1.setYSpeed(-400,400);
+    emitter_chanh = game.add.emitter(0, 0, 300);
+	emitter_chanh.makeParticles('part-chanh');
+	emitter_chanh.gravity = 300;
+    emitter_chanh.setYSpeed(-400,400);
 
-    emitter_chanh2 = game.add.emitter(0, 0, 300);
-	emitter_chanh2.makeParticles('part-chanh2');
-	emitter_chanh2.gravity = 300;
-    emitter_chanh2.setYSpeed(-400,400);
-    
-    emitter_chanhday1 = game.add.emitter(0, 0, 300);
-	emitter_chanhday1.makeParticles('part-chanhday1');
-	emitter_chanhday1.gravity = 300;
-    emitter_chanhday1.setYSpeed(-400,400);
-
-    emitter_chanhday2 = game.add.emitter(0, 0, 300);
-	emitter_chanhday2.makeParticles('part-chanhday2');
-	emitter_chanhday2.gravity = 300;
-    emitter_chanhday2.setYSpeed(-400,400);
+    emitter_chanhday = game.add.emitter(0, 0, 300);
+	emitter_chanhday.makeParticles('part-chanhday');
+	emitter_chanhday.gravity = 300;
+    emitter_chanhday.setYSpeed(-400,400);
 
     game.time.events.loop(Phaser.Timer.SECOND, updateTimer, this);
-
 }
 
 function createGroup (numItems, sprite) {
@@ -243,7 +224,6 @@ function checkIntersects(fruit, callback) {
         y = contactPoint.y;
 
         game.add.audio('sfx').play();
-
         switch(fruit.parent){
             case thachxanh_objects:
                 killFruit(fruit,'chanh',x,y); break;
@@ -265,22 +245,23 @@ function killFruit(fruit,type,x,y) {
     var value =  status[Math.floor(Math.random()*status.length)];
     switch(type){
         case 'thom':
-            Emitter(emitter_thom1,fruit);
-            Emitter(emitter_thom2,fruit);
+            Emitter(emitter_thom,fruit);
+            Emitter(emitter_thom,fruit);
             Tween(x,y,value);
+            break;
 
         case 'chanh':
-            Emitter(emitter_chanh1,fruit);
-            Emitter(emitter_chanh2,fruit);
+            Emitter(emitter_chanh,fruit);
+            Emitter(emitter_chanh,fruit);
             Tween(x,y,value);
+            break;
 
-            break;
         case 'chanhday':
-            Emitter(emitter_chanhday1,fruit);
-            Emitter(emitter_chanhday2,fruit);
+            Emitter(emitter_chanhday,fruit);
+            Emitter(emitter_chanhday,fruit);
             Tween(x,y,value);
-            
             break;
+
         default: break;
     }
 	fruit.kill();
@@ -296,12 +277,12 @@ function Tween(x,y,image){
     game_status = game.add.image(x-80,y-80,image_status);
     game.add.tween(game_status).to( { alpha: 0 }, 1000, Phaser.Easing.Linear.None, true, 0, 0, false);
 }
+
 function Emitter(item,fruit){
     item.x = fruit.x;
     item.y = fruit.y;
     item.start(true, 2000, null, 1);
 }
-
 
 function gameOver(){
     alert('game over')
