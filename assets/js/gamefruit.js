@@ -50,9 +50,8 @@ var
     button,
     points = [];	
 
-var fireRate = 1000;
-var nextFire = 0;
-var counter = 0;
+var fireRate = 100;
+var nextFire = 200;
 
 function create() {
     bg = game.add.image(w / 2, h / 2, 'bg');
@@ -137,6 +136,7 @@ function throwObject() {
         var random = Math.floor(Math.random() * Math.floor(30));
 		if (random>20 && random<30) {
             throw_obj(thachxanh_objects);
+            
         }else if(random>10 && random<20){
             throw_obj(thachvang_objects);
         }else{
