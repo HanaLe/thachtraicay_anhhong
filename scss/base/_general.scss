@@ -93,13 +93,12 @@
     &-title{
         color: #ed1c24;
         text-align: center;
-       
     }
     &-group{
         text-align: center;
         width: 100%;
         &:not(:last-child){
-            margin-bottom: 4vh;
+            margin-bottom: 3vh;
         }
     }
     &-control{

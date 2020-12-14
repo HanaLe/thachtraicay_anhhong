@@ -291,7 +291,7 @@ select::-ms-expand {
 }
 
 .form-group:not(:last-child) {
-  margin-bottom: 4vh;
+  margin-bottom: 3vh;
 }
 
 .form-control {
@@ -581,8 +581,8 @@ select::-ms-expand {
 
 @media only screen and (max-width: 767px) {
   .screen03 .form-title {
-    font-size: 0.28rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.24rem;
+    margin-bottom: 0.2rem;
     text-shadow: 0.025rem 0 0 rgba(240, 181, 68, 0.8);
   }
 }
@@ -600,7 +600,7 @@ select::-ms-expand {
 }
 
 .screen03 .form-button-small {
-  text-shadow: 1px 1px 1px #fab89d, 1px -1px 1px #fab89d, 2px 2px 1px #fab89d;
+  text-shadow: 1px 1px 1px #fab89d, 1px -1px 1px #fab89d, 2px 2px 1px #fab89d;
 }
 
 .screen03 .form-button.orange {

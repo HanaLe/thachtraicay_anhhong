@@ -18,8 +18,8 @@
         }
         &-title{
             @include SP{
-                font-size: 0.28rem;
-                margin-bottom: 0.4rem;
+                font-size: 0.24rem;
+                margin-bottom: 0.2rem;
                 text-shadow: 0.025rem 0 0 rgba(#f0b544,0.8);
             }
             @include Tablet{
