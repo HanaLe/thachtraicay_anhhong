@@ -50,8 +50,8 @@ var
     button,
     points = [];	
 
-var fireRate = 100;
-var nextFire = 200;
+var fireRate = 1000;
+var nextFire = 0;
 
 function create() {
     bg = game.add.image(w / 2, h / 2, 'bg');
@@ -131,7 +131,11 @@ function throwObject() {
         thachvang_objects.countDead()>0 && 
         thachcam_objects.countDead()>0 
         ) {
-
+        setTimeout(function(){
+            if(fireRate>200){
+                fireRate = fireRate - 100
+            }
+        },1000)
 		nextFire = game.time.now + fireRate;
         var random = Math.floor(Math.random() * Math.floor(30));
 		if (random>20 && random<30) {
